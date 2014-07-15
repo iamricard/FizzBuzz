@@ -1,25 +1,18 @@
-# String calculator
+Haven't posed a community problem lately, so here goes.
 
-The String Calculator is a TDD kata - an exercise in coding, refactoring and test-first. It has 2 parts to it.
+The so-called "fizzbuzz" problem is commonly posed to prospective job candidates
+in programming/CS/software engineering type positions. Can you solve it?
 
-## Before you start
+### RULES
+Be honest; don't cheat with google. It takes the fun out of problem solving.
+Use ANY programming language you want. It can be solved in many ways using many
+different languages.
+Post your source code and program output so I can verify that it actually works.
+Either use code tags, Pastebin, or upload it in an archive (e.g. .zip)
 
- - Try not to read ahead.
- - Do one task at a time. The trick is to learn to work incrementally.
- - Make sure you only test for correct inputs. there is no need to test for invalid inputs for this kata
+### INSTRUCTIONS
 
-## Exercise
-
- 1. Create a simple String calculator with a method int Add(string numbers)
- 2. The method can take 0, 1 or 2 numbers, and will return their sum (for an empty string it will return 0) for example “” or “1” or “1,2”
- 3. Start with the simplest test case of an empty string and move to 1 and two numbers
- 4. Remember to solve things as simply as possible so that you force yourself to write tests you did not think about
- 5. Remember to refactor after each passing test
- 6. Allow the Add method to handle an unknown amount of numbers
- 7. Allow the Add method to handle new lines between numbers (instead of commas). The following input is ok: “1\n2,3” (will equal 6). The following input is NOT ok: “1,\n” (not need to prove it - just clarifying)
- 8. Support different delimiters. To change a delimiter, the beginning of the string will contain a separate line that looks like this: “//[delimiter]\n[numbers…]” for example “//;\n1;2” should return three where the default delimiter is ‘;’ . The first line is optional. all existing scenarios should still be supported
- 9. Calling Add with a negative number will throw an exception “negatives not allowed” - and the negative that was passed.if there are multiple negatives, show all of them in the exception message stop here if you are a beginner. Continue if you can finish the steps so far in less than 30 minutes.
- 10. Numbers bigger than 1000 should be ignored, so adding 2 + 1001 = 2
- 11. Delimiters can be of any length with the following format: “//[delimiter]\n” for example: “//[***]\n1***2***3” should return 6
- 12. Allow multiple delimiters like this: “//[delim1][delim2]\n” for example “//[*][%]\n1*2%3” should return 6.
-make sure you can also handle multiple delimiters with length longer than one char
+Write a program that prints out the numbers from 1 to 100. However, for every
+number that is a multiple of 3 print "Fizz" instead. For every number that is
+a multiple of 5, print "Buzz" instead. Finally, for every number that is
+a multiple of BOTH 3 and 5, print out "FizzBuzz".

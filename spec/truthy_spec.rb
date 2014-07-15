@@ -1,38 +1,44 @@
-require_relative '../SCalc'
+require_relative '../FizzBuzz'
 
-describe "String calculator spec" do
-  describe "When adding" do
-    it "and given an empty string it should return 0" do
-      expect(SCalc.add('')).to eq(0)
+describe "Fizz Buzz spec" do
+  describe "When printing" do
+    patterns = {
+      "Fizz" => Proc.new { |n, w| n % 3 == 0 ? "#{w}Fizz" : w },
+      "Buzz" => Proc.new { |n, w| n % 5 == 0 ? "#{w}Buzz" : w },
+      "Zap" => Proc.new { |n, w| n % 7 == 0 ? "#{w}Zap" : w },
+      "Nike" => Proc.new { |n, w| n % 13 == 0 ? "#{w}Nike" : w },
+      "Greep" => Proc.new { |n, w| n.to_s.include?("1") ? "#{w}Greep" : w },
+      "Awesome" => Proc.new { |n, w| n == 47 ? "Awesome" : w }
+    }
+
+    it "the number 9 it should be Fizz" do
+      expect(FizzBuzz.apply(patterns, 9)).to eq("Fizz")
     end
 
-    it "and given one number it should return that number" do
-      expect(SCalc.add('1')).to eq(1)
+    it "the number 10 it should be BuzzGreep" do
+      expect(FizzBuzz.apply(patterns, 10)).to eq("BuzzGreep")
     end
 
-    it "and given two numbers it should return the sum both numbers" do
-      expect(SCalc.add('1,2')).to eq(3)
+    it "the number 15 should be FizzBuzzGreep" do
+      expect(FizzBuzz.apply(patterns, 15)).to eq("FizzBuzzGreep")
     end
 
-    it "and given several numbers it should return the sum of all of them" do
-      expect(SCalc.add('1,2,3,4,5,6,7,8,9')).to eq(45)
+    it "the number 45 should be FizzBuzz" do
+      expect(FizzBuzz.apply(patterns, 45)).to eq("FizzBuzz")
     end
 
-    it "and given numbers with a newline it should still sum all of them" do
-      expect(SCalc.add("1\n2\n3")).to eq(6)
+    it "the number 13 should be NikeGreep" do
+      expect(FizzBuzz.apply(patterns, 13)).to eq("NikeGreep")
     end
 
-    it "should accept a custom delimiter like so '//[delimiter]\\n'" do
-      expect(SCalc.add("//;\n1;2;3")).to eq(6)
-      expect(SCalc.add("//;1;2;3")).to eq(6)
-      expect(SCalc.add("//a\n1a2a3")).to eq(6)
+    it "the number contains 11 should be Greep" do
+      expect(FizzBuzz.apply(patterns, 11)).to eq("Greep")
     end
 
-    it "should not accept negative numbers" do
-      expect{ SCalc.add("1,-3,6") }.to raise_error("negatives not allowed. -3")
-      expect{ SCalc.add("1,-3,-6") }.to raise_error("negatives not allowed. -3 -6")
-      expect(SCalc.add("//-\n1-3-6")).to eq(10)
+    it "the number is 47 it should be Awesome" do
+      expect(FizzBuzz.apply(patterns, 47)).to eq("Awesome")
     end
+
   end
 end
 
